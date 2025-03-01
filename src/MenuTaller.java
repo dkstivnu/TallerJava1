@@ -35,8 +35,6 @@ public class MenuTaller {
 
                 break;
             default:
-
-                break;
         }
 
 
