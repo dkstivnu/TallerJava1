@@ -174,9 +174,9 @@ public class MenuTaller {
         float altura;
         float resultado;
 
-        System.out.println("Ingrese el valor de la base");
+        System.out.println("Ingrese el valor de la base: ");
         base = sc.nextInt();
-        System.out.println("Ingrese el valor de la altura");
+        System.out.println("Ingrese el valor de la altura: ");
         altura = sc.nextInt();
         if (base > 0 && altura > 0) {
             resultado = area(base, altura);
@@ -267,33 +267,59 @@ public class MenuTaller {
         } else if (numTabla < 0) {
             System.out.println("El numero de la tabla no puede ser negativo");
             return false;
-        } else if (numTabla > 15) {
-            System.out.println("El numero de la tabla no puede ser mayor a 15");
-            return false;
         }
         return true;
     }
 
     private static void imprimirTabla(int numTabla) {
         for (int i = 1; !(15 < i); i++) {
-
             System.out.println(numTabla + " * " + i + " = " + multiplicar(numTabla, i));
-
         }
     }
 
     // 3. --------------------------------------------------------------
 
     private static void encontrarCocienteResiduo(Scanner sc) {
+        int dividendo;
+        int residuo;
+        int divisor;
+        int cociente = 0;
+
+        System.out.println("Ingrese el dividendo");
+        dividendo = sc.nextInt();
+        System.out.println("Ingrese el divisor");
+        divisor = sc.nextInt();
+
+            if (validacionDivision(divisor,dividendo)) {
+                while (dividendo >= divisor) {
+                    dividendo -= divisor;
+                    cociente++;
+
+                }
+                residuo = dividendo;
+                System.out.println("Cociente:" + cociente);
+                System.out.println("Residuo:" + residuo);
+            }
 
     }
 
     // 4. FUNCIONES Y PROCEDIMIENTOS DE ENCONTRAR EL COCIENTE Y EL RESIDUO
-
+    private static boolean validacionDivision(int divisor, int dividendo) {
+        if (divisor <= 0) {
+            System.out.println("El divisor debe ser mayor a 0");
+            return false;
+        } else if (dividendo<0) {
+            System.out.println("El dividendo debe ser mayor a 0");
+            return false;
+        }
+        return true;
+    }
     // 4. --------------------------------------------------------------
-
-
-    //----------FIN DE LOS METODOS-----------------
+//----------FIN DE LOS METODOS-----------------
 }
-//Iba a seguir programando pero me di cuenta que ya acabe 😭
-//super bien...quedte y ...no se como se ecribe corrgir?jajsjs
+
+
+
+
+
+
