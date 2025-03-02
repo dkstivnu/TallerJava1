@@ -32,14 +32,15 @@ public class MenuTaller {
                 case 5:
                     System.out.println("Has terminado el programa.");
                     break;
-                default: System.out.println("Opcion no valida, intente nuevamente.");
+                default:
+                    System.out.println("Opcion no valida, intente nuevamente.");
             }
 
-        }while (opcion != 5);
+        } while (opcion != 5);
 
     }
 
-//-------- METODOS DEL MENU DE HERRAMIENTAS/PROGRAMAS ------------
+//-------- METHODS DEL MENU DE HERRAMIENTAS/PROGRAMAS ------------
 
     private static void imprimirMenu() {
         System.out.println("--------- MENU TALLER ----------");
@@ -173,11 +174,54 @@ public class MenuTaller {
     private static void precioImpresiones() {
         Scanner sc = new Scanner(System.in);
 
+        int numImpresiones;
+        int precio;
+        int costoFinal;
+
+        System.out.println("Ingrese el numero de impresiones: ");
+        numImpresiones = sc.nextInt();
+
+        if (validationImpresiones(numImpresiones)) {
+
+            precio = calcularPrecio(numImpresiones);
+
+            costoFinal = precio * numImpresiones;
+
+            System.out.println("El costo total por cada fotocopia ("+precio+" $/u) es: "+costoFinal+" $");
+        }
 
 
     }
 
     // 2. FUNCIONES Y PROCEDIMIENTOS DE LOS PRECIOS DE LAS IMPRESIONES
+
+    private static int calcularPrecio(int numImpresiones) {
+        int precio;
+        if (numImpresiones <= 100) {
+            precio = 200;
+        } else if (numImpresiones <= 200) {
+            precio = 150;
+        } else if (numImpresiones <= 500) {
+            precio = 100;
+        } else {
+            precio = 70;
+        }
+        return precio;
+    }
+
+    private static boolean validationImpresiones(int numImpresiones) {
+
+        if (numImpresiones < 0) {
+            System.out.println("El numero de impresiones no puede ser negativo");
+            return false;
+        } else if (numImpresiones == 0) {
+            System.out.println("El numero de impresiones no puede ser cero");
+            return false;
+        }
+
+        return true;
+
+    }
 
     // 2. --------------------------------------------------------------
 
