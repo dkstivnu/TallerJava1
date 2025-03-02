@@ -4,40 +4,43 @@ public class MenuTaller {
 
     public static void main(String[] args) {
         int opcion;
-
         Scanner sc = new Scanner(System.in);
 
         imprimirMenu();
 
-        System.out.print("Elige una opcion: ");
-        opcion = sc.nextInt();
+        do {
 
+            System.out.print("Elige una opcion: ");
+            opcion = sc.nextInt();
 
-        switch (opcion) {
-            case 0:
-                calculadora();
-                break;
-            case 1:
-                calcularTriangulo();
-                break;
-            case 2:
-                precioImpresiones();
-                break;
-            case 3:
-                tablaMulti();
-                break;
-            case 4:
-                encontrarCocienteResiduo();
-                break;
-            case 5:
-                System.out.println("Has terminado el programa.");
-                break;
-            default: System.out.println("Opcion no valida, intente nuevamente.");
-        }
+            switch (opcion) {
+                case 0:
+                    calculadora();
+                    break;
+                case 1:
+                    calcularTriangulo();
+                    break;
+                case 2:
+                    precioImpresiones();
+                    break;
+                case 3:
+                    tablaMulti();
+                    break;
+                case 4:
+                    encontrarCocienteResiduo();
+                    break;
+                case 5:
+                    System.out.println("Has terminado el programa.");
+                    break;
+                default: System.out.println("Opcion no valida, intente nuevamente.");
+            }
 
+        }while (opcion != 5);
 
     }
-//-------- Procedimientos y funciones de cada funcion del menu ------------
+
+//-------- METODOS DEL MENU DE HERRAMIENTAS/PROGRAMAS ------------
+
     private static void imprimirMenu() {
         System.out.println("--------- MENU TALLER ----------");
         System.out.println("0. Calculadora");
@@ -129,7 +132,7 @@ public class MenuTaller {
         } while (option != 5);
     }
 
-    //FUNCIONES Y PROCEDIMIENTOS DE LA CALCULADORA
+    // 0. FUNCIONES Y PROCEDIMIENTOS DE LA CALCULADORA
 
     public static void imprimirMenuCalc() {
         System.out.println("-------- MENU --------");
@@ -157,25 +160,43 @@ public class MenuTaller {
         return (num3 / num4);
     }
 
-    //--------------------------------------------
+    // 0. --------------------------------------------
 
     private static void calcularTriangulo() {
 
-        Scanner sc = new Scanner(System.in);
-
     }
+
+    // 1. FUNCIONES Y PROCEDIMIENTOS DE CALCULAR EL AREA DE UN TRIANGULO
+
+    // 1. --------------------------------------------------------------
 
     private static void precioImpresiones() {
+        Scanner sc = new Scanner(System.in);
+
+
 
     }
+
+    // 2. FUNCIONES Y PROCEDIMIENTOS DE LOS PRECIOS DE LAS IMPRESIONES
+
+    // 2. --------------------------------------------------------------
 
     private static void tablaMulti() {
 
     }
 
-    private static void encontrarCocienteResiduo() {}
+    // 3. FUNCIONES Y PROCEDIMIENTOS DE LA IMPRESION DE LAS TABLAS DE MULTIPLICACION
+
+    // 3. --------------------------------------------------------------
+
+    private static void encontrarCocienteResiduo() {
+
+    }
+
+    // 4. FUNCIONES Y PROCEDIMIENTOS DE ENCONTRAR EL COCIENTE Y EL RESIDUO
+
+    // 4. --------------------------------------------------------------
 
 
-
-    //----------FIN DE LOS PROCEDIMIENTOS DE TODO-----------------
+    //----------FIN DE LOS METODOS-----------------
 }
