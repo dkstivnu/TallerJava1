@@ -266,7 +266,7 @@ public class MenuTaller {
         System.out.println("----- TABLA DE MULTIPLICAR -----");
         int numTabla;
 
-        System.out.println("Ingrese el numero de la tabla de multiplicar (1 - 15): ");
+        System.out.println("Ingrese el numero de la tabla de multiplicar: ");
         numTabla = sc.nextInt();
 
         if (validationTabla(numTabla)) {
