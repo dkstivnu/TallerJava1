@@ -3,31 +3,39 @@ import java.util.Scanner;
 public class MenuTaller {
 
     public static void main(String[] args) {
-        int opcion;
+
         Scanner sc = new Scanner(System.in);
 
-        imprimirMenu();
+        elegirOpcion(sc);
 
+    }
+
+
+//-------- METHODS DEL MENU DE HERRAMIENTAS/PROGRAMAS ------------
+
+    private static void elegirOpcion(Scanner sc) {
+        int opcion;
         do {
+            imprimirMenu();
 
             System.out.print("Elige una opcion: ");
             opcion = sc.nextInt();
 
             switch (opcion) {
                 case 0:
-                    calculadora();
+                    calculadora(sc);
                     break;
                 case 1:
-                    calcularTriangulo();
+                    calcularTriangulo(sc);
                     break;
                 case 2:
-                    precioImpresiones();
+                    precioImpresiones(sc);
                     break;
                 case 3:
-                    tablaMulti();
+                    tablaMulti(sc);
                     break;
                 case 4:
-                    encontrarCocienteResiduo();
+                    encontrarCocienteResiduo(sc);
                     break;
                 case 5:
                     System.out.println("Has terminado el programa.");
@@ -37,10 +45,7 @@ public class MenuTaller {
             }
 
         } while (opcion != 5);
-
     }
-
-//-------- METHODS DEL MENU DE HERRAMIENTAS/PROGRAMAS ------------
 
     private static void imprimirMenu() {
         System.out.println("--------- MENU TALLER ----------");
@@ -53,9 +58,9 @@ public class MenuTaller {
         System.out.println("--------- MENU TALLER ----------");
     }
 
-    private static void calculadora() {
 
-        final Scanner sc = new Scanner(System.in);
+    private static void calculadora(Scanner sc) {
+
         int option;
         float result;
         int num1, num2;
@@ -163,16 +168,34 @@ public class MenuTaller {
 
     // 0. --------------------------------------------
 
-    private static void calcularTriangulo() {
+    private static void calcularTriangulo(Scanner sc) {
 
+        float base;
+        float altura;
+        float resultado;
+
+        System.out.println("Ingrese el valor de la base");
+        base = sc.nextInt();
+        System.out.println("Ingrese el valor de la altura");
+        altura = sc.nextInt();
+        if (base > 0 && altura > 0) {
+            resultado = area(base, altura);
+            System.out.println("La area del triangulo es: " + resultado);
+        } else {
+            System.out.println("No son parametros validos");
+        }
     }
 
-    // 1. FUNCIONES Y PROCEDIMIENTOS DE CALCULAR EL AREA DE UN TRIANGULO
+    // 1. FUNCIONES Y PROCEDIMIENTOS DE CALCULAR EL ÁREA DE UN TRIÁNGULO
 
+    private static float area(float base, float altura) {
+        return ((base * altura) / 2);
+    }
     // 1. --------------------------------------------------------------
 
-    private static void precioImpresiones() {
-        Scanner sc = new Scanner(System.in);
+    private static void precioImpresiones(Scanner sc) {
+
+        System.out.println("----- PRECIO DE LAS IMPRESIONES -----");
 
         int numImpresiones;
         int precio;
@@ -187,10 +210,8 @@ public class MenuTaller {
 
             costoFinal = precio * numImpresiones;
 
-            System.out.println("El costo total por cada fotocopia ("+precio+" $/u) es: "+costoFinal+" $");
+            System.out.println("El costo total por las fotocopias (" + precio + " $/u) es: " + costoFinal + " $");
         }
-
-
     }
 
     // 2. FUNCIONES Y PROCEDIMIENTOS DE LOS PRECIOS DE LAS IMPRESIONES
@@ -225,15 +246,45 @@ public class MenuTaller {
 
     // 2. --------------------------------------------------------------
 
-    private static void tablaMulti() {
+    private static void tablaMulti(Scanner sc) {
+        System.out.println("----- TABLA DE MULTIPLICAR -----");
+        int numTabla;
 
+        System.out.println("Ingrese el numero de la tabla de multiplicar (1 - 15): ");
+        numTabla = sc.nextInt();
+
+        if (validationTabla(numTabla)) {
+            imprimirTabla(numTabla);
+        }
     }
 
     // 3. FUNCIONES Y PROCEDIMIENTOS DE LA IMPRESION DE LAS TABLAS DE MULTIPLICACION
 
+    private static boolean validationTabla(int numTabla) {
+        if (numTabla == 0) {
+            System.out.println("El numero de la tabla no puede ser cero");
+            return false;
+        } else if (numTabla < 0) {
+            System.out.println("El numero de la tabla no puede ser negativo");
+            return false;
+        } else if (numTabla > 15) {
+            System.out.println("El numero de la tabla no puede ser mayor a 15");
+            return false;
+        }
+        return true;
+    }
+
+    private static void imprimirTabla(int numTabla) {
+        for (int i = 1; !(15 < i); i++) {
+
+            System.out.println(numTabla + " * " + i + " = " + multiplicar(numTabla, i));
+
+        }
+    }
+
     // 3. --------------------------------------------------------------
 
-    private static void encontrarCocienteResiduo() {
+    private static void encontrarCocienteResiduo(Scanner sc) {
 
     }
 
@@ -244,3 +295,5 @@ public class MenuTaller {
 
     //----------FIN DE LOS METODOS-----------------
 }
+//Iba a seguir programando pero me di cuenta que ya acabe 😭
+//super bien...quedte y ...no se como se ecribe corrgir?jajsjs
