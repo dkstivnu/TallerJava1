@@ -49,7 +49,7 @@ public class MenuTaller {
 
     private static void imprimirMenu() {
         System.out.println("--------- MENU TALLER ----------");
-        System.out.println("0. Calculadora");
+        System.out.println("0. Calculadora Aritmetica");
         System.out.println("1. Calcular el area de un triangulo");
         System.out.println("2. Precio de las fotocopias");
         System.out.println("3. Mostrar la tabla de multiplicar");
@@ -60,10 +60,9 @@ public class MenuTaller {
 
 
     private static void calculadora(Scanner sc) {
-
         int option;
-        float result;
-        int num1, num2;
+        float resultDiv;
+        int num1, num2, result;
         float num3, num4 = 0;
 
         do {
@@ -84,7 +83,7 @@ public class MenuTaller {
                     num2 = sc.nextInt();
 
                     result = sumar(num1, num2);
-                    System.out.println("El resultado de la suma es: " + num1 + " +  " + num2 + " = " + result);
+                    System.out.println("El resultado de la suma es: " + num1 + " + " + num2 + " = " + result);
                     break;
                 case 2:
                     System.out.println("Restar dos numeros");
@@ -95,7 +94,7 @@ public class MenuTaller {
                     num2 = sc.nextInt();
 
                     result = restar(num1, num2);
-                    System.out.println("El resultado de la resta es: " + num1 + " + 0" + num2 + " = " + result);
+                    System.out.println("El resultado de la resta es: " + num1 + " - " + num2 + " = " + result);
                     break;
                 case 3:
                     System.out.println("Multiplicar dos numeros");
@@ -119,8 +118,8 @@ public class MenuTaller {
                         num4 = sc.nextFloat();
 
                         if (num4 != 0) {
-                            result = dividir(num3, num4);
-                            System.out.println("El resultado de la division es: " + num3 + " / " + num4 + " = " + result);
+                            resultDiv = dividir(num3, num4);
+                            System.out.println("El resultado de la division es: " + num3 + " / " + num4 + " = " + resultDiv);
                             break;
                         } else {
                             System.out.println("No se puede dividir entre cero");
@@ -178,19 +177,36 @@ public class MenuTaller {
         base = sc.nextInt();
         System.out.println("Ingrese el valor de la altura: ");
         altura = sc.nextInt();
-        if (base > 0 && altura > 0) {
+
+        if (validationTriangulo(base, altura)) {
             resultado = area(base, altura);
             System.out.println("La area del triangulo es: " + resultado);
-        } else {
-            System.out.println("No son parametros validos");
         }
     }
 
     // 1. FUNCIONES Y PROCEDIMIENTOS DE CALCULAR EL ÁREA DE UN TRIÁNGULO
 
+    private static boolean validationTriangulo(float base, float altura) {
+        if (altura < 0) {
+            System.out.println("La altura no puede ser negativa");
+            return false;
+        } else if (base < 0) {
+            System.out.println("La base no puede ser negativa");
+            return false;
+        } else if (altura == 0) {
+            System.out.println("La altura no puede ser cero");
+            return false;
+        } else if (base == 0) {
+            System.out.println("La base no puede ser cero");
+            return false;
+        }
+        return true;
+    }
+
     private static float area(float base, float altura) {
         return ((base * altura) / 2);
     }
+
     // 1. --------------------------------------------------------------
 
     private static void precioImpresiones(Scanner sc) {
@@ -290,30 +306,32 @@ public class MenuTaller {
         System.out.println("Ingrese el divisor");
         divisor = sc.nextInt();
 
-            if (validacionDivision(divisor,dividendo)) {
-                while (dividendo >= divisor) {
-                    dividendo -= divisor;
-                    cociente++;
+        if (validacionDivision(divisor, dividendo)) {
+            while (dividendo >= divisor) {
+                dividendo -= divisor;
+                cociente++;
 
-                }
-                residuo = dividendo;
-                System.out.println("Cociente:" + cociente);
-                System.out.println("Residuo:" + residuo);
             }
+            residuo = dividendo;
+            System.out.println("Cociente:" + cociente);
+            System.out.println("Residuo:" + residuo);
+        }
 
     }
 
     // 4. FUNCIONES Y PROCEDIMIENTOS DE ENCONTRAR EL COCIENTE Y EL RESIDUO
+
     private static boolean validacionDivision(int divisor, int dividendo) {
         if (divisor <= 0) {
             System.out.println("El divisor debe ser mayor a 0");
             return false;
-        } else if (dividendo<0) {
+        } else if (dividendo < 0) {
             System.out.println("El dividendo debe ser mayor a 0");
             return false;
         }
         return true;
     }
+
     // 4. --------------------------------------------------------------
 //----------FIN DE LOS METODOS-----------------
 }
