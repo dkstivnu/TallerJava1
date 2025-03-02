@@ -289,7 +289,7 @@ public class MenuTaller {
 
     private static void imprimirTabla(int numTabla) {
         for (int i = 1; !(15 < i); i++) {
-            System.out.println(numTabla + " * " + i + " = " + multiplicar(numTabla, i));
+            System.out.println(numTabla + " * " + i + " = " + numTabla * i);
         }
     }
 
